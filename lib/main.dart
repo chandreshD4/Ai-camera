@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter_tts/flutter_tts.dart';
@@ -46,8 +45,12 @@ class _CameraScreenState extends State<CameraScreen> {
   Future<void> _processImage() async {
     final image = await _controller.takePicture();
     final bytes = await image.readAsBytes();
+    
     final response = await model.generateContent([
-      Content.multi([TextPart("सामने क्या है? बहुत छोटा जवाब दें।"), DataPart('image/jpeg', base64Encode(bytes))])
+      Content.multi([
+        TextPart("सामने क्या है? बहुत छोटा जवाब दें।"), 
+        DataPart('image/jpeg', bytes)
+      ])
     ]);
     await flutterTts.speak(response.text ?? "समझ नहीं आया");
   }
