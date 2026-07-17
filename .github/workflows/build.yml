@@ -26,6 +26,9 @@ jobs:
     - name: Create missing Flutter files
       run: flutter create --platforms android --project-name ai_camera .
 
+    - name: Fix minSdkVersion for Camera plugin
+      run: sed -i 's/minSdkVersion flutter.minSdkVersion/minSdkVersion 21/g' android/app/build.gradle
+
     - name: Install dependencies
       run: flutter pub get
 
