@@ -24,7 +24,7 @@ jobs:
         channel: 'stable'
 
     - name: Create missing Flutter files
-      run: flutter create --platforms android .
+      run: flutter create --platforms android --project-name ai_camera .
 
     - name: Install dependencies
       run: flutter pub get
