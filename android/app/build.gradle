@@ -1,11 +1,8 @@
-plugins {
-    id "com.android.application"
-    id "kotlin-android"
-    id "dev.flutter.flutter-gradle-plugin"
-}
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'com.google.gms.google-services'
 
 android {
-    namespace "com.example.ai_camera"
     compileSdkVersion 34
 
     defaultConfig {
@@ -26,3 +23,4 @@ android {
 flutter {
     source '../..'
 }
+
